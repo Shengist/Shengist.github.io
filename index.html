@@ -3,11 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>SHOPLINE模擬</title>
     <style>
       * {
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
         max-width: 100vw;
+        margin: 0;
       }
       button {
         background-color: #0061ff;
@@ -25,18 +26,24 @@
         color: #0061ff; /* 設定 marker 顏色 */
         font-size: 1.5rem; /* 自定義 marker 大小 */
       }
+      input {
+        display: none;
+      }
       nav {
-        position: sticky;
-        top: 1rem;
+        margin-top: unset;
         display: flex;
         flex-wrap: wrap;
         background-color: #fff;
-        padding: 2rem 5rem 0 5rem;
+        padding: 1rem 5rem 1rem 5rem;
+        z-index: 1000; /* 確保顯示在頂層 */
       }
       nav img {
         height: 2rem;
         display: flex;
         margin-bottom: 0;
+      }
+      #hb-input:checked + .float .popout {
+        display: none;
       }
       .ad_contnet {
         display: flex;
@@ -70,6 +77,7 @@
       .banner {
         display: flex;
         padding-left: 5rem;
+        justify-content: left;
         align-items: center; /* 確保垂直居中 */
         background-image: linear-gradient(180deg, #fff, rgb(209, 246, 255));
       }
@@ -82,7 +90,7 @@
         width: 16rem;
       }
       .banner_content {
-        width: 20rem;
+        width: 40%;
       }
       .banner_content .banner_slogan {
         font-size: 2rem;
@@ -122,7 +130,23 @@
       .brand_text p:nth-child(2) {
         font-weight: bold;
       }
-
+      .container {
+        margin-top: 1rem;
+      }
+      .customize {
+        background-color: #fff;
+        display: flex;
+        padding: 1rem 5rem 0rem 5rem;
+        justify-content: flex-end;
+        align-items: baseline;
+      }
+      .customize a {
+        text-decoration: none;
+        color: black;
+      }
+      .customize a:first-child {
+        margin-right: 30px;
+      }
       .features {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -154,9 +178,59 @@
         line-height: 1.5; /* 調整行間距，讓段落更易讀 */
         text-align: center; /* 水平置中 */
       }
+      .footer {
+        background-color: #04142c;
+      }
+      .float {
+        margin: 0;
+        position: sticky;
+        top: 0rem;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      .footer p {
+        display: flex;
+        margin-bottom: 1rem;
+        margin-left: 7.8rem;
+        padding-top: 2rem;
+        width: 10rem;
+        justify-content: space-between;
+        align-items: flex-start;
+      }
+      .footer a {
+        text-decoration: none;
+        color: #f0f0f0;
+      }
+      .footer hr {
+        margin: 10rem 0;
+        width: 80%;
+        margin: 0 auto;
+      }
+      .footer_bottom {
+        display: flex;
+        flex-direction: row;
+        padding: 1rem 5rem 0 5rem;
+      }
+      .footer_bottom ul {
+        display: flex;
+        flex-direction: column;
+      }
+      .footer_bottom li {
+        list-style: none;
+        padding: 0.3rem;
+        color: #465a6f;
+      }
+      .footer_bottom li:nth-child(1) {
+        color: #f0f0f0;
+      }
+      .footer_bottom li a {
+        text-decoration: none;
+        color: #465a6f;
+        padding: 0;
+      }
       .img-box {
         display: flex;
-        flex: 1;
+        width: 60%;
+        /* flex: 1; */
         max-height: 30rem; /* 限制最大高度 */
         justify-content: center; /* 水平居中 */
         align-items: center; /* 垂直居中 */
@@ -179,13 +253,37 @@
         align-items: center;
         align-content: center;
       }
-
       .menu-item a {
         color: black;
         font-style: unset;
         text-decoration: none;
       }
+      .popout {
+        margin-top: unset;
+        margin: 0;
+        border: 0;
+        padding: 0.5rem 1rem 0.5rem 1rem;
+        background-color: #e59453;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 1001; /* 確保顯示在頂層 */
+      }
+      .popout p {
+        align-items: center;
+        color: #fff;
+        font-size: small;
+      }
+      .popout p:first-child {
+        color: #e59453;
+      }
+      .popout p:last-child {
+        font-size: ;
+        align-items: end;
+      }
       .topic {
+        margin-top: 3rem;
+        margin-bottom: 3rem;
         display: flex; /* 開啟 Flex 排版 */
         flex-direction: column; /* 讓內容垂直排列 */
         justify-content: center; /* 垂直置中 */
@@ -193,19 +291,53 @@
         text-align: center; /* 文字內部對齊 */
         padding-top: 6rem;
       }
-      .topic:last-child {
-        font-size: 150%;
+      .topic h2 {
+        font-size: 2em;
+        margin-bottom: 2rem;
       }
       .topic p {
         font-size: 1rem;
         color: #6a6a6a;
         margin: 10px 0;
       }
+      @media screen and (max-width: 768px) {
+        * {
+          margin: unset;
+          padding: 0;
+          max-width: 576px;
+          font-size: 60%;
+          justify-self: center;
+        }
+        .float {
+          display: none;
+        }
+        .banner {
+          flex-wrap: wrap;
+        }
+        .topic {
+          margin: 0;
+          flex-wrap: wrap;
+          justify-content: center;
+          align-items: center;
+        }
+        .topic p {
+          word-wrap: break-word;
+        }
+      }
     </style>
   </head>
 
   <body>
-    <div>
+    <input type="checkbox" name="" id="hb-input" />
+    <div class="float">
+      <div class="popout">
+        <p>x</p>
+        <p>🎊 助攻節慶商機！新戶開店補貼多重送 👉</p>
+        <p><label for="hb-input">X</label></p>
+      </div>
+      <div class="customize">
+        <a href="">登入</a><a href=""><img src="./icon/icon0.png" />台灣</a>
+      </div>
       <nav>
         <div class="logo">
           <img src="SHOPLINE.png" alt="shopline" />
@@ -452,6 +584,61 @@
           <h2>全球超過 600,000 商家已使用 SHOPLINE 開店</h2>
           <button type="button">免費試用14天</button>
         </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p><a href=".">關於我們</a> <a href=".">媒體專區</a></p>
+      <hr />
+      <div class="footer_bottom">
+        <ul>
+          <li>網路開店</li>
+          <li><a href="">特色總覽</a></li>
+          <li><a href="">功能介紹</a></li>
+          <li><a href="">版型主題</a></li>
+          <li><a href="">SHOP Builder</a></li>
+          <li><a href="">客戶案例</a></li>
+        </ul>
+        <ul>
+          <li>社群購物</li>
+          <li><a href="">特色總覽</a></li>
+          <li><a href="">功能介紹</a></li>
+          <li><a href="">IG直播 + 1</a></li>
+        </ul>
+        <ul>
+          <li>零售pos</li>
+          <li><a href="">特色總覽</a></li>
+          <li><a href="">功能介紹</a></li>
+          <li><a href="">周邊硬體</a></li>
+        </ul>
+        <ul>
+          <li>我要開店</li>
+          <li><a href="">開店方案</a></li>
+          <li><a href="">開店說明會</a></li>
+          <li><a href="">開店諮詢</a></li>
+        </ul>
+        <ul>
+          <li>更多資源</li>
+          <li><a href="">開店資源圈</a></li>
+          <li><a href="">擴充功能商店</a></li>
+          <li><a href="">新手問答</a></li>
+          <li><a href="">電商教室</a></li>
+          <li><a href="">DreamBig 創品牌</a></li>
+          <li><a href="">電商數據庫</a></li>
+          <li><a href="">LINE官方帳號</a></li>
+        </ul>
+        <div>1111111</div>
+        <ul>
+          <li>產品支援</li>
+          <li><a href="">產品最新動態</a></li>
+          <li><a href="">常見問題中心</a></li>
+        </ul>
+        <ul>
+          <li>SHOPLINE</li>
+          <li><a href="">合作機會</a></li>
+          <li><a href="">精選夥伴</a></li>
+          <li><a href="">資格與認證</a></li>
+        </ul>
       </div>
     </div>
   </body>
