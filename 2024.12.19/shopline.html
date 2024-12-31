@@ -34,7 +34,7 @@
         display: flex;
         flex-wrap: wrap;
         background-color: #fff;
-        padding: 1rem 5rem 1rem 5rem;
+        padding: 1rem 3rem 1rem 3rem;
         z-index: 1000; /* 確保顯示在頂層 */
       }
       nav img {
@@ -42,7 +42,7 @@
         display: flex;
         margin-bottom: 0;
       }
-      #hb-input:checked + .float .popout {
+      #ad-input:checked + .float .popout {
         display: none;
       }
       .ad_contnet {
@@ -65,8 +65,9 @@
       .ad_contnet li {
         margin-top: 0;
         padding: 0.1rem;
-        background: #f0f0f0;
+        background: #fff;
         text-align: left;
+        z-index: 0;
       }
       .ad_contnet ul {
         display: grid;
@@ -132,6 +133,7 @@
       }
       .container {
         margin-top: 1rem;
+        z-index: 1;
       }
       .customize {
         background-color: #fff;
@@ -178,14 +180,15 @@
         line-height: 1.5; /* 調整行間距，讓段落更易讀 */
         text-align: center; /* 水平置中 */
       }
-      .footer {
-        background-color: #04142c;
-      }
       .float {
         margin: 0;
         position: sticky;
         top: 0rem;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        z-index: 1001;
+      }
+      .footer {
+        background-color: #04142c;
       }
       .footer p {
         display: flex;
@@ -198,7 +201,7 @@
       }
       .footer a {
         text-decoration: none;
-        color: #f0f0f0;
+        color: #fff;
       }
       .footer hr {
         margin: 10rem 0;
@@ -220,12 +223,57 @@
         color: #465a6f;
       }
       .footer_bottom li:nth-child(1) {
-        color: #f0f0f0;
+        color: #fff;
       }
       .footer_bottom li a {
         text-decoration: none;
         color: #465a6f;
         padding: 0;
+      }
+      .footer_button {
+        background-color: #e3b54c;
+        color: #000;
+        border-radius: 0px;
+        width: 14rem;
+        font-size: 1.1rem;
+        display: block;
+        margin-left: auto;
+        margin-right: 8rem;
+      }
+      .footer .footer_nav {
+        color: #fff;
+        margin: auto;
+        text-align: center;
+        margin-top: 2rem;
+        line-height: 50px;
+      }
+      .footer .serviceTime {
+        color: #fff;
+        margin-top: 1rem;
+        justify-items: center;
+        align-items: start;
+      }
+      .footer .serviceTime p {
+        width: 80vw;
+        border: 0;
+        margin-bottom: auto;
+        margin-top: 1rem;
+      }
+      .footer .socialmedia {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: start;
+        margin-right: 7rem;
+        height: 3rem;
+      }
+      .footer .socialmedia img {
+        margin-right: 1.5rem;
+        margin-top: 1rem;
+        width: 1.5rem;
+      }
+      .hb {
+        display: none;
       }
       .img-box {
         display: flex;
@@ -258,6 +306,9 @@
         font-style: unset;
         text-decoration: none;
       }
+      .navMobile {
+        display: none;
+      }
       .popout {
         margin-top: unset;
         margin: 0;
@@ -278,9 +329,9 @@
         color: #e59453;
       }
       .popout p:last-child {
-        font-size: ;
         align-items: end;
       }
+
       .topic {
         margin-top: 3rem;
         margin-bottom: 3rem;
@@ -300,19 +351,255 @@
         color: #6a6a6a;
         margin: 10px 0;
       }
-      @media screen and (max-width: 768px) {
+      @media screen and (max-width: 429px) {
+        /* .float {
+          display: none;
+        } */
+        /* .footer_bottom {
+          display: none;
+        } */
+        /* ---未完成--- */
         * {
           margin: unset;
           padding: 0;
-          max-width: 576px;
-          font-size: 60%;
+          max-width: 428px;
           justify-self: center;
         }
-        .float {
-          display: none;
+        h1 {
+          font-size: 2rem;
+        }
+        .ad_contnet {
+          margin: 0;
+          padding: 0;
+          padding-top: 5rem;
+          padding-left: 0.5rem;
+          padding-right: 0.5rem;
+          flex-direction: column-reverse;
+        }
+        .ad_contnet:nth-child(2n) {
+          flex-direction: column-reverse;
+        }
+        .ad_contnet ul {
+          display: flex;
+          flex-direction: column;
+          position: relative;
+          align-items: start;
+          padding-bottom: 1rem;
+        }
+        .ad_slogan {
+          display: flex;
+          flex-direction: column;
+        }
+        .ad_slogan a {
+          margin-top: 0;
+          margin-left: 2rem;
         }
         .banner {
-          flex-wrap: wrap;
+          padding-left: 0.5rem;
+          padding-right: 0.5rem;
+          width: 100vw;
+          display: flex;
+          flex-direction: column;
+          text-align: center;
+        }
+        .banner button {
+          /* outline: red 1px solid; */
+          font-size: 1rem;
+          width: 90vw;
+          margin-left: 1rem;
+        }
+        .banner_content {
+          width: 100vw;
+          text-align: start;
+        }
+        .banner_content .banner_slogan {
+          font-size: 2rem;
+        }
+        .banner_content .banner_desc {
+          font-size: 1.2rem;
+          width: 90vw;
+        }
+        .brand_list {
+          flex-direction: column;
+        }
+        .brand_list img {
+          display: none;
+        }
+        .brand_list img:first-child {
+          display: flex;
+          height: 100%;
+          width: 100%;
+        }
+        .brand_text {
+          padding: 0;
+          margin: 0 1rem 0 1rem;
+        }
+        .brand_text p {
+          padding: 1rem 0 0 0;
+        }
+        .container button:last-child {
+          margin-bottom: 2rem;
+        }
+        .features {
+          display: inline;
+        }
+        .float {
+          display: flex;
+          flex-direction: column;
+          align-items: start;
+          width: 100vw;
+          background-color: #fff;
+          justify-self: left;
+          z-index: 1001;
+        }
+        .float logo {
+          display: block;
+        }
+
+        .float .navWeb {
+          display: none;
+        }
+        .float .navMobile {
+          display: block;
+          width: 100vw;
+        }
+        .float .navMobile nav {
+          width: 100vw;
+          font-size: 1.5rem;
+          display: flex;
+          justify-content: start;
+          padding: unset;
+          flex-direction: column;
+        }
+        .float .navMobile .logo {
+          display: flex;
+          flex-direction: row;
+        }
+        .float .navMobile .logo img {
+          margin: 1rem;
+          height: 3rem;
+        }
+        .float .navMobile button {
+          background-color: #fff;
+          text-decoration: underline;
+          color: #000;
+          margin-left: auto;
+          margin-top: 1rem;
+          font-size: large;
+        }
+        .float .navMobile .customize {
+          display: none;
+          flex-direction: column;
+          justify-items: center;
+          align-items: center;
+        }
+        .float .navMobile .customize #mobileLogin {
+          background-color: #0061ff;
+          width: 90vw;
+          color: white;
+          margin-bottom: 1rem;
+        }
+        .float .navMobile .menu-bar {
+          display: none;
+          flex-direction: column;
+          margin-bottom: 1rem;
+          padding: 0;
+          justify-content: start;
+          left: -100%;
+          opacity: 0.2;
+          transition: all 3s;
+        }
+        .float .navMobile .menu-bar span {
+          margin: 0;
+          margin-left: 1rem;
+          margin-right: auto;
+          margin-top: 1rem;
+          margin-bottom: 1rem;
+        }
+        .float .popout {
+          flex-grow: 1;
+          width: 95vw;
+        }
+        .footer {
+          margin: 0;
+          width: 100vw;
+        }
+        .footer p {
+          align-items: center;
+          justify-items: center;
+          margin: 0;
+          margin-bottom: 2rem;
+        }
+        .footer_bottom {
+          display: flex;
+          flex-direction: column;
+          justify-content: start;
+          padding: 0;
+          margin-right: auto;
+          margin-left: 2rem;
+          margin-bottom: 1rem;
+        }
+        .footer_bottom li {
+          display: none;
+        }
+        .footer_bottom div {
+          display: none;
+        }
+        .footer_bottom li:nth-child(1) {
+          display: flex;
+          margin-top: 1rem;
+          color: #919191;
+        }
+        .footer_info button {
+          margin-right: 1rem;
+        }
+        .footer hr {
+          width: 80vw;
+        }
+        .footer_info .socialmedia {
+          margin: auto;
+          margin-right: 1rem;
+        }
+        #hb-input:checked ~ .float .hb span:nth-child(1) {
+          transform: rotate(45deg) translate(5px, 10px);
+        }
+        #hb-input:checked ~ .float .hb span:nth-child(2) {
+          display: none;
+        }
+        #hb-input:checked ~ .float .hb span:nth-child(3) {
+          transform: rotate(-45deg) translate(4px, -10px);
+        }
+        #hb-input:checked ~ .float .navMobile .menu-bar {
+          left: 0;
+          opacity: 1;
+          display: flex;
+        }
+        #hb-input:checked ~ .float .navMobile .customize {
+          left: 0;
+          opacity: 1;
+          display: flex;
+        }
+        .hb {
+          height: 25px;
+          width: 25px;
+          line-height: 25px;
+          margin-top: 1.7rem;
+          background-color: #fff;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+        }
+        .hb span {
+          display: block;
+          width: 20px;
+          height: 3px;
+          background-color: black;
+          border-radius: 6px;
+          transition: all 0.5s;
+        }
+        .img-box img {
+          max-height: 23rem;
+          max-width: 23rem;
         }
         .topic {
           margin: 0;
@@ -329,16 +616,40 @@
 
   <body>
     <input type="checkbox" name="" id="hb-input" />
+    <input type="checkbox" name="" id="ad-input" />
     <div class="float">
       <div class="popout">
         <p>x</p>
         <p>🎊 助攻節慶商機！新戶開店補貼多重送 👉</p>
-        <p><label for="hb-input">X</label></p>
+        <p><label for="ad-input">X</label></p>
       </div>
-      <div class="customize">
-        <a href="">登入</a><a href=""><img src="./icon/icon0.png" />台灣</a>
+      <div class="navMobile">
+        <nav>
+          <div class="logo">
+            <img src="SHOPLINE2.png" alt="shopline" />
+            <button type="button">免費試用</button>
+            <label class="hb" for="hb-input">
+              <span></span>
+              <span></span>
+              <span></span>
+            </label>
+          </div>
+          <div class="menu-bar">
+            <span class="menu-item"><a href="#">產品核心</a></span>
+            <span class="menu-item"><a href="#">新手上路</a></span>
+            <span class="menu-item"><a href="#">開店服務</a></span>
+            <span class="menu-item"><a href="#">行銷推廣</a></span>
+            <span class="menu-item"><a href="#">營運管理</a></span>
+            <span class="menu-item"><a href="#">方案費用</a></span>
+            <span class="menu-item"><a href="#">更多資源</a></span>
+          </div>
+        </nav>
+        <div class="customize">
+          <button id="mobileLogin" type="button">登入</button
+          ><a href=""><img src="./icon/icon0.png" />台灣</a>
+        </div>
       </div>
-      <nav>
+      <nav class="navWeb">
         <div class="logo">
           <img src="SHOPLINE.png" alt="shopline" />
         </div>
@@ -627,7 +938,7 @@
           <li><a href="">電商數據庫</a></li>
           <li><a href="">LINE官方帳號</a></li>
         </ul>
-        <div>1111111</div>
+        <div>111111111</div>
         <ul>
           <li>產品支援</li>
           <li><a href="">產品最新動態</a></li>
@@ -639,6 +950,27 @@
           <li><a href="">精選夥伴</a></li>
           <li><a href="">資格與認證</a></li>
         </ul>
+      </div>
+      <div class="footer_info">
+        <button type="button" class="footer_button">資訊安全保護專區</button>
+        <br />
+        <hr />
+        <div class="socialmedia">
+          <img src="./socialmedia/facebook.png" alt="" />
+          <img src="./socialmedia/instgram.png" alt="" />
+          <img src="./socialmedia/linkedin.png" alt="" />
+          <img src="./socialmedia/youtube.png" alt="" />
+          <img src="./socialmedia/whatsapp.png" alt="" />
+          <img src="./socialmedia/mail.png" alt="" />
+        </div>
+        <br />
+        <div class="serviceTime">
+          <p>
+            服務時間 星期一至五 上午 10 點至晚上 7 點 © Copyright 2024 SHOPLINE
+            Tech Co., Ltd.
+          </p>
+        </div>
+        <div class="footer_nav">網站地圖 | 隱私權政策 | 會員條款</div>
       </div>
     </div>
   </body>
