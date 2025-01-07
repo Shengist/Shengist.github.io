@@ -11,111 +11,244 @@
       crossorigin="anonymous"
     />
     <style>
+      /* From Uiverse.io by cssbuttons-io */
+      button {
+        appearance: button;
+        background-color: rgb(108, 81, 81);
+        border: solid transparent;
+        border-radius: 16px;
+        border-width: 0 0 4px;
+        box-sizing: border-box;
+        color: #ffffff;
+        cursor: pointer;
+        display: inline-block;
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: 0.8px;
+        line-height: 20px;
+        margin: 0;
+        outline: none;
+        overflow: visible;
+        padding: 13px 19px;
+        text-align: center;
+        text-transform: uppercase;
+        touch-action: manipulation;
+        transform: translateZ(0);
+        transition: filter 0.2s;
+        user-select: none;
+        -webkit-user-select: none;
+        vertical-align: middle;
+        white-space: nowrap;
+      }
+
+      button:after {
+        background-clip: padding-box;
+        background-color: rosybrown;
+        border: solid transparent;
+        border-radius: 16px;
+        border-width: 0 0 4px;
+        bottom: -4px;
+        content: "";
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: -1;
+      }
+
+      button:main,
+      button:focus {
+        user-select: auto;
+      }
+
+      button:hover:not(:disabled) {
+        filter: brightness(1.1);
+      }
+
+      button:disabled {
+        cursor: auto;
+      }
+
+      button:active:after {
+        border-width: 0 0 0px;
+      }
+
+      button:active {
+        padding-bottom: 10px;
+      }
+
+      .card {
+        margin-top: 2rem;
+        max-width: 100%;
+        background-color: rgb(7 16 45);
+        background: linear-gradient(
+          to top right,
+          rgb(240, 215, 190),
+          rgb(255, 178, 90)
+        );
+        background: -webkit-linear-gradient(
+          to top right,
+          rgb(7 16 45),
+          rgb(58 60 84)
+        );
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 20px;
+        border: 1px solid rgb(84 90 106);
+        margin-bottom: 2rem;
+      }
+
+      .container {
+        width: 100%;
+        height: 100%;
+        --color: rgba(114, 114, 114, 0.3);
+        background-color: wheat;
+        background-image: linear-gradient(
+            0deg,
+            transparent 24%,
+            var(--color) 25%,
+            var(--color) 26%,
+            transparent 27%,
+            transparent 74%,
+            var(--color) 75%,
+            var(--color) 76%,
+            transparent 77%,
+            transparent
+          ),
+          linear-gradient(
+            90deg,
+            transparent 24%,
+            var(--color) 25%,
+            var(--color) 26%,
+            transparent 27%,
+            transparent 74%,
+            var(--color) 75%,
+            var(--color) 76%,
+            transparent 77%,
+            transparent
+          );
+        background-size: 55px 55px;
+      }
       .btn-group {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 10px;
         width: 60vw;
-        margin: 1rem 10rem 1rem 10rem;
+        margin: 1rem;
         border-radius: 0;
       }
-      .form-check {
-        margin: 5rem 10rem 1rem 10rem;
+      .btn-group button:last-child {
+        grid-column: 1 / 4;
       }
-      .form-check label {
-        font-size: larger;
+      .form-title {
+        margin-top: 1rem;
       }
       .form-control {
         background-color: wheat;
       }
       .input-group {
-        margin: 0rem 10rem 1rem 10rem;
+        margin: 1rem;
         width: 60vw;
-        outline: 1px solid darkcyan;
+        border-radius: 3px;
+      }
+      .input-group-text {
+        background-color: wheat;
+        border-radius: 5px;
+        color: #000;
       }
       .list-group {
-        margin: 0 10rem 1rem 10rem;
+        margin: 1rem;
         width: 60vw;
-        outline: 1px solid darkcyan;
+        border-radius: 10px;
+      }
+      .list-group-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: wheat;
+        border: 1px solid black;
+      }
+
+      .list-group button:hover:not(:disabled) {
+        filter: brightness(1.1);
+      }
+      .toast-header button:after {
+        background-color: #ffffff;
       }
     </style>
   </head>
-  <body>
-    <div class="form-check">
-      <input
-        class="form-check-input"
-        type="radio"
-        name="scriptSelection"
-        id="flexRadioDefault2"
-        value="Andy_Homework1_ab.js"
-        checked
-      />
-      <label class="form-check-label" for="flexRadioDefault2"> 幾Ａ幾Ｂ </label>
-    </div>
-    <div id="app">
-      <div class="input-group input-group-lg">
-        <span class="input-group-text" id="inputGroup-sizing-lg"
-          >請輸入數字：
-        </span>
-        <input
-          type="text"
-          class="form-control"
-          aria-label="Sizing example input"
-          aria-describedby="inputGroup-sizing-lg"
-          disabled
-        />
-      </div>
-      <div class="btn-group" role="group" aria-label="Basic outlined example">
-        <button type="button" class="btn btn-outline-primary" id="number">
-          1
-        </button>
-        <button type="button" class="btn btn-outline-primary" id="number">
-          2
-        </button>
-        <button type="button" class="btn btn-outline-primary" id="number">
-          3
-        </button>
-        <button type="button" class="btn btn-outline-primary" id="number">
-          4
-        </button>
-        <button type="button" class="btn btn-outline-primary" id="number">
-          5
-        </button>
-        <button type="button" class="btn btn-outline-primary" id="number">
-          6
-        </button>
-        <button type="button" class="btn btn-outline-primary" id="number">
-          7
-        </button>
-        <button type="button" class="btn btn-outline-primary" id="number">
-          8
-        </button>
-        <button type="button" class="btn btn-outline-primary" id="number">
-          9
-        </button>
-        <button type="button" class="btn btn-outline-primary" id="reset">
-          X
-        </button>
-        <button type="button" class="btn btn-outline-primary" id="number">
-          0
-        </button>
-        <button type="button" class="btn btn-outline-primary" id="confirm">
-          Confirm
-        </button>
-        <button type="button" class="btn btn-outline-primary" id="reboot">
-          Reboot
-        </button>
-      </div>
+  <body class="container">
+    <div class="card">
+      <div class="form-title"><h1>幾Ａ幾Ｂ</h1></div>
+      <div>
+        <button type="button" class="" id="liveToastBtn">偷看答案</button>
 
-      <ul class="list-group">
-        <li class="list-group-item">過往紀錄</li>
-      </ul>
+        <div class="toast-container position-fixed bottom-0 end-0 p-3">
+          <div
+            id="liveToast"
+            class="toast"
+            role="alert"
+            aria-live="assertive"
+            aria-atomic="true"
+          >
+            <div class="toast-header">
+              <strong class="me-auto">答案是</strong>
+              <small></small>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="toast"
+                aria-label="Close"
+              >
+                Ｘ
+              </button>
+            </div>
+            <div class="toast-body"></div>
+          </div>
+        </div>
+      </div>
+      <div id="app">
+        <div class="input-group input-group-lg">
+          <span class="input-group-text" id="inputGroup-sizing-lg"
+            >請輸入數字：
+          </span>
+          <input
+            type="text"
+            class="form-control"
+            aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-lg"
+            disabled
+          />
+        </div>
+        <div class="btn-group" role="group" aria-label="Basic outlined example">
+          <button type="button" class="btn-light" id="number">1</button>
+          <button type="button" class="btn-light" id="number">2</button>
+          <button type="button" class="btn-light" id="number">3</button>
+          <button type="button" class="btn-light" id="number">4</button>
+          <button type="button" class="btn-light" id="number">5</button>
+          <button type="button" class="btn-light" id="number">6</button>
+          <button type="button" class="btn-light" id="number">7</button>
+          <button type="button" class="btn-light" id="number">8</button>
+          <button type="button" class="btn-light" id="number">9</button>
+          <button type="button" class="btn-light" id="reset">清除輸入</button>
+          <button type="button" class="btn-light" id="number">0</button>
+          <button type="button" class="btn-light" id="reboot">重新開始</button>
+          <button type="button" class="btn-light" id="confirm">送出答案</button>
+        </div>
+        <ul class="list-group">
+          <li class="list-group-item">
+            過往紀錄 <button id="clearResult">清除</button>
+          </li>
+          <div id="resultList"></div>
+        </ul>
+      </div>
     </div>
-    <script src="Andy_Homework1_ab.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
+    <script src="Andy_Homework1_ab.js"></script>
   </body>
 </html>
