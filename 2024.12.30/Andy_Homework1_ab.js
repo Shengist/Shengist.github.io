@@ -6,12 +6,15 @@ const abGame = (function () {
   const toastTrigger = document.getElementById("liveToastBtn");
   const toastLiveExample = document.getElementById("liveToast");
   const toastbody = document.querySelector(".toast-body");
+  const intervalBtn = document.querySelector("#interval_btn");
 
   //變數宣告
   var answer_ab = [];
   var check = [];
   var correct_a = 0;
   var correct_b = 0;
+  let myInterval;
+  let counter;
 
   //宣告handler函數
   const clearResultHandler = function () {
@@ -52,10 +55,24 @@ const abGame = (function () {
         }
       }
     }
-    if (correct_a == 4) {
-      alert("恭喜答對");
+    if (counter == 1) {
+      resultList_ab.innerHTML += `<li class="list-group-item">猜測數值：${input_ab.value}，結果是：${correct_a}a${correct_b}b</li>`;
+    } else {
+      resultList_ab.innerHTML += `<li class="list-group-item">猜測數值：${
+        input_ab.value
+      }，結果是：${correct_a}a${correct_b}b，計時第${counter - 1}秒時送出</li>`;
     }
-    resultList_ab.innerHTML += `<li class="list-group-item">猜測數值：${input_ab.value}，結果是：${correct_a}a${correct_b}b</li>`;
+    if (correct_a == 4) {
+      if (myInterval || intervalBtn.textContent.endsWith("(暫停中)")) {
+        clearInterval(myInterval);
+        myInterval = null;
+        alert(`恭喜答對，共花費了${counter - 1}秒`);
+        intervalBtn.textContent = `計時模式`;
+        counter = 1;
+      } else {
+        alert(`恭喜答對`);
+      }
+    }
     correct_a = 0;
     correct_b = 0;
     check = [];
@@ -84,9 +101,23 @@ const abGame = (function () {
     .querySelector("#clearResult")
     .addEventListener("click", clearResultHandler);
 
+  //設定計時模式計時器
+  intervalBtn.addEventListener("click", function () {
+    if (myInterval) {
+      clearInterval(myInterval);
+      myInterval = null;
+      intervalBtn.textContent = `計時模式：已過${counter - 1}秒(暫停中)`;
+      return;
+    }
+    myInterval = setInterval(function () {
+      intervalBtn.textContent = `計時模式：已過${counter++}秒`;
+    }, 1000 * 1);
+  });
+
   //輸入數字的函數
   function clickFn(e) {
-    input_ab.value += `${e.currentTarget.innerText}`;
+    // console.log(e);
+    input_ab.value += `${e.currentTarget.dataset.val}`;
   }
 
   //亂數函數
@@ -102,6 +133,12 @@ const abGame = (function () {
     check = [];
     correct_a = 0;
     correct_b = 0;
+    counter = 1;
+    intervalBtn.textContent = `計時模式`;
+    if (myInterval) {
+      clearInterval(myInterval);
+      myInterval = null;
+    }
     for (var a = 0; a < 4; a++) {
       var num = getRandomInt(0, 9);
       while (a != 0 && answer_ab.includes(num)) {
@@ -114,9 +151,9 @@ const abGame = (function () {
     }
     // answer_ab.forEach((x) => console.log(x));
     console.log(answer_ab.join());
-    toastbody.innerHTML = answer_ab.join();
+    toastbody.innerHTML = answer_ab.join("");
   }
-  //Toast觸發
+  //設定答案Toast觸發
   if (toastTrigger) {
     const toastBootstrap =
       bootstrap.Toast.getOrCreateInstance(toastLiveExample);
