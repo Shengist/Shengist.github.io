@@ -1,4 +1,4 @@
-const abGame = (function () {
+(function () {
   //抓取文件元素
   const input_ab = document.querySelector(".form-control");
   const result_ab = document.querySelector(".list-group");
@@ -86,7 +86,7 @@ const abGame = (function () {
 
   //為鍵盤綁定click
   document
-    .querySelectorAll("#number")
+    .querySelectorAll(".number")
     .forEach((BUTTON) => BUTTON.addEventListener("click", clickFn));
   //設定reset
   document.querySelector("#reset").addEventListener("click", resetHandler);
