@@ -1,0 +1,48 @@
+.btn-primary {
+  --bs-btn-bg: #b62996;
+  --bs-btn-border-color: #b62996;
+  --bs-btn-hover-bg: #801668;
+  --bs-btn-hover-border-color: #b62996;
+  --bs-btn-active-bg: #b62996;
+  box-shadow: 3px 2px rebeccapurple;
+}
+.bg-primary{
+  --bs-primary-rgb: 232, 133, 210;
+  --bs-bg-opacity:0.3;
+  box-shadow: 3px 2px rebeccapurple;
+}
+.list-group-item.active {
+  background-color: #b62996;
+}
+#todoListField {
+  border: 1px solid darkmagenta;
+  border-radius: 15px;
+  box-shadow: 3px 2px rebeccapurple;
+}
+#dateListField,
+#dateListField a {
+  border: 1px solid darkmagenta;
+  border-radius: 15px;
+  box-shadow: 3px 2px rebeccapurple;
+}
+
+#inputField {
+  border: 1px solid darkmagenta;
+  border-radius: 15px;
+  box-shadow: 3px 2px rebeccapurple;
+  flex-wrap: nowrap;
+  width: 40%;
+}
+#inputField input,
+#inputField span {
+  border: 1px solid darkmagenta;
+  border-radius: 15px;
+  max-width: 100%;
+  box-shadow: 3px 2px rebeccapurple;
+}
+
+@media screen and (max-width: 992px) {
+  #inputField {
+    width: 100%;
+  }
+}
