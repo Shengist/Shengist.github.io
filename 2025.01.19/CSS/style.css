@@ -1,3 +1,16 @@
+*,
+button {
+  --bs-font-monospace: "PingFang TC", "Microsoft JhengHei", "Source Han Sans TC",
+    Arial, sans-serif;
+  font-weight: bold;
+}
+.btn {
+  --bs-btn-font-weight: unset;
+}
+.btn-outline-primary {
+  font-weight: bold;
+}
+
 .btn-primary {
   --bs-btn-bg: #b62996;
   --bs-btn-border-color: #b62996;
@@ -6,13 +19,27 @@
   --bs-btn-active-bg: #b62996;
   box-shadow: 3px 2px rebeccapurple;
 }
-.bg-primary{
-  --bs-primary-rgb: 232, 133, 210;
-  --bs-bg-opacity:0.3;
+.btn-outline-primary {
+  --bs-btn-color: #b62996;
+  --bs-btn-border-color: #b62996;
+  --bs-btn-hover-bg: #801668;
+  --bs-btn-hover-border-color: #b62996;
+  --bs-btn-active-bg: #b62996;
   box-shadow: 3px 2px rebeccapurple;
+}
+.bg-primary {
+  --bs-primary-rgb: 232, 133, 210;
+  --bs-bg-opacity: 0.3;
+  box-shadow: 3px 2px rebeccapurple;
+}
+.list-group-item:hover {
+  background-color: rgb(197, 197, 197);
 }
 .list-group-item.active {
   background-color: #b62996;
+}
+.list-group-item.active:hover {
+  background-color: #801668;
 }
 #todoListField {
   border: 1px solid darkmagenta;
@@ -25,7 +52,9 @@
   border-radius: 15px;
   box-shadow: 3px 2px rebeccapurple;
 }
-
+#datelistController article:hover {
+  --bs-primary-rgb: 128, 22, 104;
+}
 #inputField {
   border: 1px solid darkmagenta;
   border-radius: 15px;
