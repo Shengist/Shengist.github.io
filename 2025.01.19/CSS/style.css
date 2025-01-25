@@ -70,6 +70,40 @@ button {
   box-shadow: 3px 2px rebeccapurple;
 }
 
+#calendar {
+  table-layout: fixed;
+  width: 100%;
+}
+.table > :not(caption) > * > * {
+  border-bottom-width: 0;
+}
+#calendar th {
+  border-bottom: 1px solid darkmagenta;
+}
+#calendar td:hover,
+#calendar th:hover {
+  background-color: #c1c1c1;
+}
+#calendar td {
+  text-shadow: #dadada 2px 2px 1px;
+}
+.calhl {
+  color: white !important;
+  background-color: darkmagenta !important;
+  text-shadow: unset !important;
+  border-radius: 25px !important;
+}
+.caldot::after{
+  content: "";
+  display: inline-block;
+  width: 6px; /* 小圓點的直徑 */
+  height: 6px; /* 小圓點的直徑 */
+  background-color: darkmagenta; /* 小圓點的顏色 */
+  border-radius: 50%; /* 讓它變成圓形 */
+  margin-left: 4px; /* 與數字的間距 */
+  margin-bottom: 2px;
+  vertical-align: center; /* 垂直對齊 */
+}
 @media screen and (max-width: 992px) {
   #inputField {
     width: 100%;
